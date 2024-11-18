@@ -1,0 +1,73 @@
+group 'com.xiaomi.flutter_xiaomi_iap'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven {
+            credentials {
+                username '5f45c9022d5925c55bc00c6f'
+                password 'NQwPJAa42nlV'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2028284-release-awMPKn/'
+        }
+        maven {
+            credentials {
+                username '5f45c9022d5925c55bc00c6f'
+                password 'NQwPJAa42nlV'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2028284-snapshot-gw4bH1/'
+        }
+        maven {
+            url "https://repos.xiaomi.com/maven"
+            credentials {
+                username 'mi-gamesdk'
+                password 'AKCp8mYeLuhuaGj6bK1XK7t2w4CsPuGwg6GpQdZ9cat7K59y5sD7Tx3dHjJcFrBGj3TQ4vi7g'
+            }
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.xiaomi.flutter_xiaomi_iap'
+    }
+
+    compileSdkVersion 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+    }
+}
+
+dependencies {
+    implementation (name:'mio_sdk_app_3.6.1', ext:'aar')
+    implementation (name:'alipaysdk-android-15.8.17', ext:'aar')
+    implementation 'androidx.annotation:annotation:1.0.0'
+    implementation 'com.xiaomi.account:passportsdk-account-oauth:5.0.0'
+    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.xiaomi.gamevenus:milink-compat:4.0.34'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+}
