@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_xiaomi_iap/flutter_xiaomi_iap.dart';
@@ -75,13 +74,27 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  void _createRenewalPurchaseByProductCode() async {
+    try {
+      final result = await FlutterXiaomiIap.createPurchaseByProductCode(
+        productType: MiProductType.SUBSCRIPTION,
+        orderNo: DateTime.timestamp().microsecondsSinceEpoch.toString(),
+        productCode: 'renewaltest',
+        paymentType: MiPaymentType.ALIPAY,
+      );
+      setState(() { _logMsg = result.toJson(); });
+    } on PlatformException catch (e) {
+      setState(() { _logMsg = e?.message ?? '创建自动续费订单失败'; });
+    }
+  }
+
   void _createPurchaseByProductCode() async {
     try {
       final result = await FlutterXiaomiIap.createPurchaseByProductCode(
         productType: MiProductType.CONSUMABLE,
-        orderNo: '4563567468687nfhkusfgdghfdskjghtiugh',
+        orderNo: DateTime.timestamp().microsecondsSinceEpoch.toString(),
         productCode: 'consumetest',
-        paymentType: null,
+        paymentType: null,//MiPaymentType.ALIPAY,
       );
       setState(() { _logMsg = result.toJson(); });
     } on PlatformException catch (e) {
@@ -93,9 +106,9 @@ class _MyAppState extends State<MyApp> {
     try {
       final result = await FlutterXiaomiIap.createPurchaseByFeeValue(
         productType: MiProductType.CONSUMABLE,
-        orderNo: '4563567468687nfhkusfgdghfdskjghtiugh',
+        orderNo: DateTime.timestamp().microsecondsSinceEpoch.toString(),//'4563567468687nfhkusfgdghfdskjghtiugb',
         feeValue: 1,
-        paymentType: null,
+        paymentType: null,//MiPaymentType.ALIPAY,
       );
       setState(() { _logMsg = result.toJson(); });
     } on PlatformException catch (e) {
@@ -147,6 +160,7 @@ class _MyAppState extends State<MyApp> {
                 _buildAction('小米账号登录(仅手动登录)', () => _miLogin(loginType: MiLoginType.MANUAL_ONLY, accountType: MiAccountType.MI_SDK), !_isLogin),
                 _buildAction('创建按计费代码计费订单', () => _createPurchaseByProductCode(), _isLogin),
                 _buildAction('创建按金额计费订单', () => _createPurchaseByFeeValue(), _isLogin),
+                _buildAction('创建自动续费订单订单', () => _createRenewalPurchaseByProductCode(), _isLogin),
               ],
             ),
           ),

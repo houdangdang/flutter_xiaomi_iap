@@ -123,6 +123,7 @@ class FlutterXiaomiIap {
   /// @param {MiProductType} productType 产品类型
   /// @param {String} orderNo 订单号
   /// @param {String} productCode 产品code
+  /// @param {int} quantity 数量
   /// @param {MiPaymentType} paymentType 优先支付方式
   /// @returns Object
   static Future<MiBuyResult> createPurchaseByProductCode({

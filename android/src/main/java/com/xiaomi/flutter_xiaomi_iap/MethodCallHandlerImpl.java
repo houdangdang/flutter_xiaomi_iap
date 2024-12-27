@@ -180,13 +180,13 @@ public class MethodCallHandlerImpl implements MethodCallHandler, OnAlertListener
                 try {
                     MiCommplatform.getInstance().miUniPay(mActivity, miBuyInfo, this);
                 } catch (Exception e) {
-                    //result.error(String.valueOf(MiCode.MI_ERROR_PAY_FAILURE), e.getMessage(), null);
+                    e.printStackTrace();
                 }
             } else {
                 try {
-                    //MiCommplatform.getInstance().miUniPay(mActivity, miBuyInfo, this, paymentType, null);
+                    MiCommplatform.getInstance().miUniPay(mActivity, miBuyInfo, this, paymentType, null);
                 } catch (Exception e) {
-                    //result.error(String.valueOf(MiCode.MI_ERROR_PAY_FAILURE), e.getMessage(), null);
+                    e.printStackTrace();
                 }
             }
         }
@@ -251,6 +251,7 @@ public class MethodCallHandlerImpl implements MethodCallHandler, OnAlertListener
      */
     @Override
     public void finishPayProcess(int returnCode, @Nullable String returnInfo) {
+        //Log.e(TAG, "返回代码::::::" + returnCode + "\n" + "返回信息::::::" + returnInfo);
         switch (returnCode) {
             /**
              * 支付成功
@@ -263,6 +264,12 @@ public class MethodCallHandlerImpl implements MethodCallHandler, OnAlertListener
                 mPayResult.success(mGson.toJson(resultMap));
                 break;
             /**
+             * 支付取消
+             */
+            case MiCode.MI_ERROR_PAY_CANCEL:
+                mPayResult.error(String.valueOf(MiCode.MI_ERROR_PAY_CANCEL), "支付取消", null);
+                break;
+            /**
              * 订阅成功
              */
             case MiCode.MI_SUB_SUCCESS:
@@ -273,10 +280,10 @@ public class MethodCallHandlerImpl implements MethodCallHandler, OnAlertListener
                 mPayResult.success(mGson.toJson(resultMap1));
                 break;
             /**
-             * 支付取消
+             * 订阅取消
              */
-            case MiCode.MI_ERROR_PAY_CANCEL:
-                mPayResult.error(String.valueOf(MiCode.MI_ERROR_PAY_CANCEL), "支付取消", null);
+            case MiCode.MI_ERROR_SUB_CANCEL:
+                mPayResult.error(String.valueOf(MiCode.MI_ERROR_SUB_CANCEL), "订阅取消", null);
                 break;
             /**
              * 有未完成的登录/支付流程
