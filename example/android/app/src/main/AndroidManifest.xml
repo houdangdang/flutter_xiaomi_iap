@@ -1,18 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.kmbml.rusi">
-    <!--  安卓11包可见性适配  -->
-    <queries>
-        <!--  微信  -->
-        <package android:name="com.tencent.mm" />
-        <!--  支付宝  -->
-        <package android:name="com.eg.android.AlipayGphone" />
-    </queries>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="com.xiaomi.sdk.permission.APP" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.xiaomi.permission.AUTH_SERVICE" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:label="flutter_xiaomi_iap_example"
@@ -22,20 +9,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- Xiaomi SDK Need -->
-        <meta-data
-            android:name="notch.config"
-            android:value="portrait|landscape" />
-        <meta-data
-            android:name="android.max_aspect"
-            android:value="2.2" />
-
-        <activity android:name="com.xiaomi.account.openauth.AuthorizeActivity" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:launchMode="singleTop"
+            android:launchMode="standard"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"

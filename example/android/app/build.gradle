@@ -32,6 +32,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    signingConfigs {
+        defaultConfig {
+            storeFile file('com.kmbml.rusi.jks')
+            storePassword 'delun123456'
+            keyAlias 'delun'
+            keyPassword 'delun123456'
+        }
+    }
+
     defaultConfig {
         applicationId "com.kmbml.rusi"
         minSdkVersion flutter.minSdkVersion
@@ -41,26 +50,22 @@ android {
         multiDexEnabled true
     }
 
-    signingConfigs {
-        debug {
-            storeFile file('com.kmbml.rusi.jks')
-            storePassword 'delun123456'
-            keyAlias 'delun'
-            keyPassword 'delun123456'
-        }
-        release {
-            storeFile file('com.kmbml.rusi.jks')
-            storePassword 'delun123456'
-            keyAlias 'delun'
-            keyPassword 'delun123456'
-        }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
-
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.release
+            minifyEnabled false
+            multiDexEnabled true
+            shrinkResources false
+            signingConfig signingConfigs.defaultConfig
+        }
+        debug {
+            minifyEnabled false
+            multiDexEnabled true
+            shrinkResources false
+            signingConfig signingConfigs.defaultConfig
         }
     }
 }

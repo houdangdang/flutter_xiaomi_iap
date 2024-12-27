@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#80000000">
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/mio_ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mio_shape_check_stand_background"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingRight="30dp">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="48dp">
+           <ImageView
+               android:layout_alignParentRight="true"
+               android:id="@+id/mio_im_close"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="10dp"
+               android:layout_marginTop="10dp"
+               android:src="@drawable/mio_mipay_payment_close" />
+
+           <TextView
+               android:layout_alignParentBottom="true"
+               android:layout_centerHorizontal="true"
+               android:id="@+id/mio_tv_app_name"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:ellipsize="end"
+               android:maxLines="1"
+               android:text="初始信息"
+               android:textColor="@android:color/black"
+               android:layout_marginEnd="50dp"
+               android:textSize="17sp" />
+       </RelativeLayout>
+
+        <ScrollView
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp">
+
+                    <TextView
+                        android:id="@+id/mio_tv_purchase_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="#80000000"
+                        android:textSize="16sp"
+                        tools:text="淘票票电影：" />
+
+                    <TextView
+                        android:id="@+id/mio_tv_origin_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/mio_tv_deal_price"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/mio_tv_deal_price"
+                        android:textColor="#4D000000"
+                        android:textSize="12sp"
+                        android:paddingBottom="2dp"
+                        tools:text="￥99.00" />
+
+                    <TextView
+                        android:id="@+id/mio_tv_deal_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#FA6400"
+                        android:textSize="16sp"
+                        tools:text="￥99.00" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mio_rl_coupon_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="优惠券："
+                        android:textSize="16sp"
+                        android:textColor="#80000000" />
+
+                    <TextView
+                        android:id="@+id/mio_tv_coupon_n"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/mio_tv_coupon"
+                        android:text="- "
+                        android:layout_centerVertical="true"
+                        android:textColor="#FA6400"
+                        android:textSize="14sp"
+                        tools:text="-" />
+
+                    <TextView
+                        android:id="@+id/mio_tv_coupon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/mio_iv_arrow1"
+                        android:text="无可用"
+                        android:textColor="#FA6400"
+                        android:textSize="16sp"
+                        tools:text="￥1.00" />
+
+                    <ImageView
+                        android:id="@+id/mio_iv_arrow1"
+                        android:layout_width="6.66dp"
+                        android:layout_height="13.3dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/mio_mipay_payment_arrow"
+                        android:contentDescription="@+id/act_item_arrow" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mio_layout_wechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="33.33dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="26.67dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/mio_iv_wechat_logo"
+                        android:layout_width="33.3dp"
+                        android:layout_height="33.3dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mio_mipay_payment_wx" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12.67dp"
+                        android:layout_toRightOf="@id/mio_iv_wechat_logo"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="微信支付"
+                        android:textColor="#FF000000"
+                        android:textSize="15.33sp" />
+
+                    <CheckBox
+                        android:id="@+id/mio_checkbox_wechat"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="13dp"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:button="@drawable/mio_payment_selector_check_blue" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mio_layout_alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="33.33dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="26.67dp"
+                    android:layout_marginBottom="53dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/mio_iv_alipay_logo"
+                        android:layout_width="33.3dp"
+                        android:layout_height="33.3dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mio_mipay_payment_alipay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12.67dp"
+                        android:layout_toRightOf="@id/mio_iv_alipay_logo"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="支付宝"
+                        android:textColor="#FF000000"
+                        android:textSize="15.33sp" />
+
+                    <CheckBox
+                        android:id="@+id/mio_checkbox_alipay"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="13dp"
+                        android:checked="false"
+                        android:clickable="false"
+                        android:button="@drawable/mio_payment_selector_check_blue" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/mio_tv_pay"
+                android:layout_alignBottom="@+id/mio_tv_pay"
+                android:layout_toLeftOf="@+id/mio_tv_pay"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="合计："
+                        android:textColor="@color/text_color_black_90"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/mio_tv_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="17dp"
+                        android:textColor="@color/color_FA6400"
+                        tools:text="￥99.00" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/mio_tv_use_coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="17dp"
+                    android:lines="1"
+                    app:minTextSize="8sp"
+                    android:gravity="right"
+                    android:textColor="@color/text_color_black_80"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:text="已使用优惠卷，节省1.00元" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/mio_tv_pay"
+                android:layout_width="147dp"
+                android:layout_height="47dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/mio_bg_half_corner_blue_24"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="支付"
+                android:textColor="@color/color_white"
+                android:textSize="15.33sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <FrameLayout
+        android:background="@color/translucent_background"
+        android:id="@+id/mio_fl_container"
+        android:layout_alignTop="@id/mio_ll_container"
+        android:layout_alignBottom="@id/mio_ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
+</RelativeLayout>
