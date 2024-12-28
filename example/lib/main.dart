@@ -37,7 +37,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   void _initXiaomiIap() async {
     if (!_isInstalled) {
       _isInstalled = await FlutterXiaomiIap.init(appId: appId, appKey: appKey);
@@ -52,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       setState(() { _logMsg = result != null ? result.toJson() : '未登录';  });
       debugPrint('获取小米账号/自有账号登录信息 === $_logMsg');
     } on PlatformException catch (e) {
-      setState(() { _logMsg = e?.message ?? '获取小米账号/自有账号登录失败'; });
+      setState(() { _logMsg = e.code + (e?.message ?? '获取小米账号/自有账号登录失败'); });
     }
   }
 
@@ -70,7 +69,7 @@ class _MyAppState extends State<MyApp> {
       setState(() { _logMsg = result.toJson(); _isLogin = true; });
       debugPrint('小米账号/自有账号登录 === $_logMsg');
     } on PlatformException catch (e) {
-      setState(() { _logMsg = e?.message ?? '小米账号/自有账号登录失败'; _isLogin = false; });
+      setState(() { _logMsg = e.code + (e?.message ?? '小米账号/自有账号登录失败'); _isLogin = false; });
     }
   }
 
@@ -84,7 +83,7 @@ class _MyAppState extends State<MyApp> {
       );
       setState(() { _logMsg = result.toJson(); });
     } on PlatformException catch (e) {
-      setState(() { _logMsg = e?.message ?? '创建自动续费订单失败'; });
+      setState(() { _logMsg = e.code + (e?.message ?? '创建自动续费订单失败'); });
     }
   }
 
@@ -98,7 +97,7 @@ class _MyAppState extends State<MyApp> {
       );
       setState(() { _logMsg = result.toJson(); });
     } on PlatformException catch (e) {
-      setState(() { _logMsg = e?.message ?? '创建按计费代码计费订单失败'; });
+      setState(() { _logMsg = e.code + (e?.message ?? '创建按计费代码计费订单失败'); });
     }
   }
 
@@ -112,7 +111,7 @@ class _MyAppState extends State<MyApp> {
       );
       setState(() { _logMsg = result.toJson(); });
     } on PlatformException catch (e) {
-      setState(() { _logMsg = e?.message ?? '创建按金额计费订单失败'; });
+      setState(() { _logMsg = e.code + (e?.message ?? '创建按金额计费订单失败'); });
     }
   }
 
