@@ -58,7 +58,6 @@
                     android:layout_marginTop="7dp"
                     android:paddingTop="13dp"
                     android:paddingBottom="13dp">
-
                     <TextView
                         android:id="@+id/mio_tv_purchase_name"
                         android:layout_width="wrap_content"
@@ -66,6 +65,9 @@
                         android:layout_centerVertical="true"
                         android:textColor="#80000000"
                         android:textSize="16sp"
+                        android:maxWidth="220dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
                         tools:text="淘票票电影：" />
 
                     <TextView
