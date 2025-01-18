@@ -35,12 +35,15 @@ public class MethodCallHandlerImpl implements MethodCallHandler, OnAlertListener
 
     private final Activity mActivity;
 
+    private final PayListActivityMonitor monitor;
+
     private Result mLoginResult;
 
     private Result mPayResult;
 
-    public MethodCallHandlerImpl(Activity activity) {
+    public MethodCallHandlerImpl(Activity activity, PayListActivityMonitor monitor) {
         this.mActivity = activity;
+        this.monitor = monitor;
         mGson = new GsonBuilder().create();
     }
 
@@ -59,9 +62,20 @@ public class MethodCallHandlerImpl implements MethodCallHandler, OnAlertListener
             case "createPurchase":
                 createPurchase(call, result);
                 break;
+            case "setClickEnabled":
+                setClickEnabled(call, result);
+                break;
             default:
                 result.notImplemented();
                 break;
+        }
+    }
+
+    private void setClickEnabled(@NonNull final MethodCall call, @NonNull final Result result) {
+        if (monitor != null) {
+            final boolean enable = ValueGetter.getBoolean("enable", call);
+            monitor.setClickEnabled(enable);
+            result.success(true);
         }
     }
 

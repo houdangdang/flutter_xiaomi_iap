@@ -146,4 +146,9 @@ class FlutterXiaomiIap {
       ),
     );
   }
+
+  /// 是否启用支付按钮的模拟点击
+  static Future<bool> setClickEnabled({ required bool enable }) async {
+    return FlutterXiaomiIapPlatform.instance.setClickEnabled(enable: enable);
+  }
 }

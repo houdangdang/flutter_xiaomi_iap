@@ -17,6 +17,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool _isInstalled = false;
   bool _isLogin = false;
+  bool _isClickEnable = false;
   String _logMsg = '';
   String appId = '2882303761520305359';
   String appKey = '5732030596359';
@@ -154,6 +155,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 _buildAction('获取登录信息(状态)', () => _getLoginInfo(), true),
+                _buildSwitch(_isLogin),
                 _buildAction('小米账号登录(自动登录优先)', () => _miLogin(loginType: MiLoginType.AUTO_FIRST, accountType: MiAccountType.MI_SDK), !_isLogin),
                 _buildAction('小米账号登录(仅自动登录)', () => _miLogin(loginType: MiLoginType.AUTO_ONLY, accountType: MiAccountType.MI_SDK), !_isLogin),
                 _buildAction('小米账号登录(仅手动登录)', () => _miLogin(loginType: MiLoginType.MANUAL_ONLY, accountType: MiAccountType.MI_SDK), !_isLogin),
@@ -163,6 +165,29 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSwitch(bool visible) {
+    return Visibility(
+      visible: visible,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('是否启用支付按钮的模拟点击',
+              style: _isInstalled ? normalTextStyle : disableTextStyle,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(width: 10),
+            Switch(value: _isClickEnable, onChanged: (value) {
+              setState(() => _isClickEnable = !_isClickEnable);
+              FlutterXiaomiIap.setClickEnabled(enable: _isClickEnable);
+            }),
+          ],
         ),
       ),
     );

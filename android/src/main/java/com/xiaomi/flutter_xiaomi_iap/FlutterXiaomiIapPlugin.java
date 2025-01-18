@@ -1,6 +1,7 @@
 package com.xiaomi.flutter_xiaomi_iap;
 
 import android.app.Activity;
+import android.app.Application;
 
 import androidx.annotation.NonNull;
 
@@ -34,8 +35,11 @@ public class FlutterXiaomiIapPlugin implements FlutterPlugin, ActivityAware {
   @Override
   public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
     final Activity activity = binding.getActivity();
-    MiCommplatform.setApplication(activity.getApplication());
-    mMethodCallHandler = new MethodCallHandlerImpl(activity);
+    final Application application = activity.getApplication();
+    MiCommplatform.setApplication(application);
+    final PayListActivityMonitor monitor = new PayListActivityMonitor();
+    application.registerActivityLifecycleCallbacks(monitor);
+    mMethodCallHandler = new MethodCallHandlerImpl(activity, monitor);
     mMethodChannel.setMethodCallHandler(mMethodCallHandler);
   }
 

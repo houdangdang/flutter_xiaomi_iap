@@ -48,4 +48,8 @@ abstract class FlutterXiaomiIapPlatform extends PlatformInterface {
   Future<MiBuyResult> createPurchase({required MiBuyInfo miBuyInfo}) async {
     throw UnimplementedError('createPurchase() has not been implemented.');
   }
+
+  Future<bool> setClickEnabled({ required bool enable }) {
+    throw UnimplementedError('setClickEnable() has not been implemented.');
+  }
 }
